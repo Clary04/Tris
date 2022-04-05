@@ -1,0 +1,194 @@
+:root{
+    --light-blue: #61c5ff;
+    --blue: #38b6ff;
+    --black: #272727;
+    --white: #eef4f4;
+    --dark-blue: #5f7cff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    overflow-x: hidden;
+}
+
+
+body{
+    background: var(--white);
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1400px;
+    padding: 0 2rem;
+}
+
+main h1{
+    font-size: 2rem;
+    color: var(--black);
+    padding: 3rem;
+    width: 100%;
+    left: 0;
+    text-align: center;
+}
+
+main table{
+    width: 90%;
+}
+
+main table th{
+    background-color: var(--light-blue);
+    color: var(--black);
+}
+
+main table tr{
+    width: 100%;
+}
+
+main table td{
+    max-width: 400px;
+    min-width: 100px;
+    text-align: center;
+}
+
+main table tr td .cor_triagem{
+    width: 100%;
+    height: 100%;
+}
+
+main table td a {
+    color: var(--black);
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+main table td a:hover{
+    color: var(--dark-blue);
+}
+
+footer{ 
+    bottom: 0; 
+    left: 0;
+    position: fixed;
+    margin-top: 5rem;
+    background-color: var(--blue);
+    width: 100vw;
+    height: 45vh;
+    color: var(--white);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.about .logo-div{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    cursor: pointer;
+    max-width: 400px;
+    
+}
+
+.about .logo-div .logo-img img{
+    width: 80px;
+    height: 80px;
+}
+
+.about .logo-div .logo-text h1{
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: var(--black);
+}
+
+.about .logo-div .logo-text h1::selection{
+    background-color: var(--black);
+    color: var(--dark-blue);
+}
+
+.about .about-devs{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: .3rem;
+}
+
+.about .about-devs i{
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: .3rem;
+}
+
+.about .about-devs a{
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 500;
+}
+
+.about .about-devs p{
+    font-size: .8rem;
+}
+
+.about .about-devs span{
+    color: var(--black);
+}
+
+
+/* responsive */
+@media (max-width: 887px){
+    footer{
+        height: 60vh;
+    }
+    footer .container-footer{
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+
+@media (max-width: 887px){
+    footer{
+        height: 40vh;
+    }
+    footer .container-footer{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+}
+@media (max-width: 789px){
+    footer{
+        height: 50vh;
+    }
+    footer .container-footer{
+        text-align: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+@media (max-width: 400px){
+    footer{
+        height: 40vh;
+    }
+}

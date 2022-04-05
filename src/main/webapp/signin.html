@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- page icon -->
+    <link rel="icon" type="image/png" href="./static/img/tris-logo-blue.png">
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="./static/css/signin.css">
+
+    <!-- javascript -->
+    <script src="./static/js/index.js" defer></script>
+
+    <!-- Title -->
+    <title>Sign in</title>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=League+Spartan:wght@100;200;300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&family=Ubuntu:wght@300&display=swap" rel="stylesheet"> 
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/e534328d53.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Post Messages 200 -->
+    <div class="message">
+        <div class="message-container">
+            <div class="text"></div>
+            <div class="button">
+                <button onclick="closeBtn();">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <main>
+        <!-- Main container -->
+        <div class="container">
+            <img src="./static/img/tris-logo.png" alt="Tris - Hospitalar Triage">
+            <h1>Sign in</h1>
+            <!-- FORM -->
+            <form action="signin" method="post" name="signinForm">
+                <input type="text" name="realname" id="realname" placeholder="Real name" required>
+                <input type="text" name="cpf" id="cpf" placeholder="CPF" required>
+                <input type="text" name="username" id="username" placeholder="Username" required>
+                <input type="password" name="user_password" id="user_password" placeholder="Password" minlength="4" required>
+                <select name="group" id="group" required>
+                    <option value="default"></option>
+                    <option value="doctor">doctor</option>
+                    <option value="nurse">nurse</option>
+                    <option value="attendant">attendant</option>
+                </select>
+                <input type="submit" value="Sign in" id="signin">
+                <a href="./login.html">Already have an account? Login!</a>
+            </form>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="about" id="about" onclick="indexPageRedirect();">
+        <div class="logo-div">
+            <div class="logo-img">
+                <img src="./static/img/tris-logo.png" alt="Tris Hospitalar Triage - Logo">
+            </div>
+            <div class="logo-text">
+                <h1>Tris</h1>
+            </div>
+        </div>
+        <div class="about-devs">
+            <i class="fa-brands fa-github"></i>
+            <a href="https://github.com/Clary04">Clarissa Vanderley</a>
+            <a href="https://github.com/GabPhoenix">Gabriel Carvalho</a>
+            <p>all rights reserved <span>&reg;</span></p>
+        </div>
+
+    </footer>
+    <!-- end footer section -->
+    <script src="./static/js/signinValidation.js"></script>
+</body>
+</html>

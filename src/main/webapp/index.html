@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+
+    <!-- page icon -->
+    <link rel="icon" type="image/png" href="./static/img/tris-logo-blue.png">
+
+    <!-- link css  -->
+    <link rel="stylesheet" href="./static/css/style.css">
+    
+    <!-- javascript -->
+    <script src="./static/js/index.js" defer></script>
+    <script src="./static/js/responsiveMenu.js" defer></script>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet"> 
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/e534328d53.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- start header section  -->
+    <header class="header" id="header">
+        <div class="menu_section">
+        <div class="logo-div">
+            <div class="logo-img">
+                <img src="./static/img/tris-logo.png" alt="Tris Hospitalar Triage - Logo">
+            </div>
+            <div class="logo-text">
+                <h1>Tris</h1>
+            </div>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#why">Why</a></li>
+                <li><a href="#usage">Usage</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+        <div class="menu_buttons">
+            <div class="menu_toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="menu_close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </div>
+        </div>
+    </header>
+    <!-- end header section   -->
+
+    <!-- start home section  -->
+    <section class="home" id="home">
+        <div class="home-left">
+            <h2>
+                Get started with the <br> 
+                best triage system!
+            </h2>
+            <p>
+                Tris system was developed to care of all patients and their family providing access to health status
+            </p>
+            <button class="get-started" onclick="loginPageRedirect();">get started</button>
+        </div>
+        <div class="home-right">
+
+        </div>
+    </section>
+    <!-- end home section  -->
+     
+    <!-- start why section -->
+    <section class="why" id="why">
+        <h2 class="why-title">Why do I should use Tris?</h2>
+        <div class="cards">
+            <div class="card">
+                <i class="fa-solid fa-universal-access"></i>
+                <h2> Access from anywhere
+                </h2>
+                <p>With Tris, you can access it from any device connected to internet!</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <h2>It's responsive
+                </h2>
+                <p>Tris system is adjustable for all devices!</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-heart"></i>
+                <h2>Easy to use
+                </h2>
+                <p>Tris is easy to use. Explore all funcionablilies!</p>
+            </div>
+        </div>
+    </section>
+    <!-- end why section -->
+
+    <!-- start usage section  -->
+    <section class="usage" id="usage">
+        <h2 class="usage-title">Start connecting</h2>
+        <div class="container">
+            <i class="fa-brands fa-connectdevelop"></i>
+            <p>Enter and <span> make it </span>happens!</p> 
+            <div class="usage-buttons">
+                <button id="login" onclick="loginPageRedirect();">Login</button>
+                <button id="signin" onclick="signinPageRedirect();">Sign in</button>
+            </div>
+            <p>Simple for <span>professionals</span>, <span>patients</span> and their <span>family</span></p>
+        </div>
+    </section>
+    <!-- end usage section  -->
+
+    <!-- start footer (about) section -->
+    <footer class="about" id="about">
+        <div class="logo-div">
+            <div class="logo-img">
+                <img src="./static/img/tris-logo.png" alt="Tris Hospitalar Triage - Logo">
+            </div>
+            <div class="logo-text">
+                <h1>Tris</h1>
+            </div>
+            <div class="about-text">
+                Tris is a Hospitalar Triage System develped to care about health with technology and love!
+                With Tris, you can be safe at your home and watch the status of your familiar in real time!
+            </div>
+        </div>
+        <div class="about-contact">
+            <h3>Contact Us!</h3>
+            <lu>
+                <li>
+                    <i class="fa-brands fa-facebook"></i>
+                    <a href="#">Facebook</a>
+                </li>
+                <li>
+                    <i class="fa-brands fa-instagram"></i>
+                    <a href="#">Instagram</a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <a href="#">Call</a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="#">Email</a>
+                </li>
+            </lu>
+        </div>
+        <div class="about-devs">
+            <i class="fa-brands fa-github"></i>
+            <a href="https://github.com/Clary04">Clarissa Wanderley</a>
+            <a href="https://github.com/GabPhoenix">Gabriel Carvalho</a>
+            <p>all rights reserved <span>&reg;</span></p>
+        </div>
+
+    </footer>
+    <!-- end about section -->
+
+    <!-- cookies agreement -->
+    <div class="apt-cookies">
+        <div class="cookies-container">
+            <p> This website use cookies!
+                You can consent to the use of such technologies by using the “Accept” button.
+            </p>
+            <button class="acpt_cookies">Accept</button>
+        </div>
+    </div>
+</body>
+</html>

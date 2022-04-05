@@ -1,0 +1,290 @@
+:root{
+    --light-blue: #61c5ff;
+    --blue: #38b6ff;
+    --black: #272727;
+    --white: #eef4f4;
+    --dark-blue: #5f7cff;
+    --success-color: #73ff96;
+    --erro-color: #ff7c7c;
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--white);
+    flex-wrap: wrap;
+}
+
+
+.message{
+    position: absolute;
+    display: none;
+    width: 100vw;
+    height: 25px;
+    top: 0; left: 0;
+    padding: .6rem 2rem;
+    background-color: var(--white);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.message .message-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 90vw;
+    height: 25px;
+}
+
+.message .button button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.message .button button i{ 
+    font-size: 1.6rem;
+    background-color: transparent;
+    color: var(--white);
+}
+
+.message.error{
+    display: flex;
+    background-color: var(--erro-color);
+}
+
+.message.success{
+    display: flex;
+    color: var(--black);
+    background-color: var(--success-color);
+}
+.container{
+    margin-top: 4rem;
+    width: 400px;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    background-color: #38b6ffdd;
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.container img{
+    margin: 1rem 8.5rem;
+    width: 120px;
+}
+
+.container h1{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 4rem;
+    margin: -1rem 0 1rem;
+    text-align: center;
+    color: var(--black);
+}
+
+.container form{
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+}
+
+.container form input{
+    margin: 2%;
+    height: 2.2rem;
+    padding: 3px 10px;
+    border-radius: 10px;
+    border: none;
+    color: var(--black);
+    font-weight: 700;
+}
+
+#login{
+    display: inline-block;
+    height: 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: var(--black);
+    color: var(--white);
+    transition: .3s ease ;
+}
+
+#login:hover{
+    background-color: var(--white);
+    color: var(--black);
+    transform: scale(1.01);
+}
+
+.container .remember{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--black);
+}
+
+.container .remember #remember_input{
+    width: 1.4rem;
+}
+
+.container .remember label{
+    font-weight: 700;
+}
+
+.container a{
+    margin: 1rem 2rem;
+    text-decoration: none;
+    text-align: center;
+    color: var(--black);
+    font-size: 1rem;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    transition: .4s ease;
+}
+
+.container a:hover{
+    transform: scale(1.1);
+    color: var(--black);
+}
+
+.container input:focus{
+    outline: none;
+    border: 2px solid var(--black);
+}
+
+/* responsive */
+@media (max-width: 420px){
+    .container{
+        margin-left: -1.8rem;
+        max-width: 350px;
+        height: 80vh;
+    }
+}
+
+footer{
+    padding: 0 2rem;
+    margin-top: 5rem;
+    background-color: var(--blue);
+    width: 100vw;
+    height: 45vh;
+    color: var(--white);
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.about .logo-div{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    cursor: pointer;
+    max-width: 400px;
+    
+}
+
+.about .logo-div .logo-img img{
+    width: 80px;
+    height: 80px;
+}
+
+.about .logo-div .logo-text h1{
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: var(--black);
+}
+
+.about .logo-div .logo-text h1::selection{
+    background-color: var(--black);
+    color: var(--dark-blue);
+}
+
+.about .about-devs{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: .3rem;
+}
+
+.about .about-devs i{
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: .3rem;
+}
+
+.about .about-devs a{
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 500;
+}
+
+.about .about-devs p{
+    font-size: .8rem;
+}
+
+.about .about-devs span{
+    color: var(--black);
+}
+
+
+/* responsive */
+@media (max-width: 887px){
+    footer{
+        height: 60vh;
+    }
+    footer .container-footer{
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+
+@media (max-width: 887px){
+    footer{
+        height: 40vh;
+    }
+    footer .container-footer{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+}
+@media (max-width: 789px){
+    footer{
+        height: 70vh;
+    }
+    footer .container-footer{
+        text-align: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+@media (max-width: 400px){
+    footer{
+        height: 40vh;
+    }
+}
