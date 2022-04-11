@@ -1,32 +1,30 @@
 package com.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import java.sql.Connection;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import org.postgresql.util.PSQLException;
 
 import com.models.PacienteModel;
 import com.models.ProfissionalModel;
+import com.models.UserLoged;
 import com.models.UsuarioModel;
-import com.repositories.Conexao;
 import com.repositories.PacienteDao;
 import com.repositories.ProfissionalDao;
 
 /**
  * Servlet implementation class AppServerlet
  */
-@WebServlet(urlPatterns =  { "/app", "/signin", "/login", "/create", "/list_patients", "/update_patient", "/delete_patient"})
+@WebServlet(urlPatterns =  { "/app", "/signin", "/login", "/create", "/list_patients", "/update_patient", "/delete_patient", "/logout"})
 
 public class AppServerlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -66,7 +64,14 @@ public class AppServerlet extends HttpServlet {
 			this.deletePatient(request, response);
 		}else if(action.equals("/list_patients")) {
 			this.listPatients(request, response);
+		}else if(action.equals("/logout")) {
+			HttpSession session = request.getSession();
+			session.removeAttribute("isloged");	
+			System.out.println("the session ends");
+			response.sendRedirect(loginPage);
 		}
+		
+		
 	}
 
 	/**
@@ -74,6 +79,7 @@ public class AppServerlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 	
@@ -107,16 +113,43 @@ public class AppServerlet extends HttpServlet {
 	 * AND AFTER, REDIRECT THEM TO THE PAGE 'CREATE NEW PATIENT'
 	 */
 	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		user.setLogin(request.getParameter("username"));
 		user.setSenha(request.getParameter("password"));
-		
+		UserLoged userlg = new UserLoged();
 		boolean log = profissionalDao.login(user);
 		
 		if(log) {
-			System.out.println("Logado");
+			
+			HttpServletRequest req = (HttpServletRequest) request;
+			HttpSession session = req.getSession();
+			
+			if(request.getAttribute("isloged")!=null) {
+				
+				Cookie cookie = new Cookie("sessaoCriada", session.getId()); 
+				System.out.println(session.getId());
+				cookie.setMaxAge(60*60);
+				
+			} else {
+				userlg.setUsername(request.getParameter("username"));
+				userlg.setPassword(request.getParameter("password"));
+				session.setAttribute("isloged", userlg);
+			}
+			
+			Cookie cookies[] = req.getCookies();
+			if(cookies.length > 0) {
+				
+				for (Cookie cookie : cookies) {
+					if(cookie.getName().equals("sessaoCriada")) {
+						request.setAttribute("isloged", cookie.getValue());
+						
+					}
+				}		
+			}
+						
+			System.out.println("Loged as: "+ userlg.getUsername());
 			request.getRequestDispatcher("/WEB-INF/newPatient.html").forward(request, response);
 		} else {
-			System.out.println("Não foi logado");
 			response.sendRedirect(loginPage);
 		}
 		
@@ -133,15 +166,19 @@ public class AppServerlet extends HttpServlet {
 		paciente.setEmail(request.getParameter("email"));
 		paciente.setQuadro(request.getParameter("triagem"));
 		paciente.setDescricao(request.getParameter("descricao"));
-		boolean cad = pacienteDao.insertPaciente(paciente);
-
-		if(cad) {
-			System.out.println("Paciente cadastrado com sucesso!");
-			response.sendRedirect("http://localhost:8080/Tris/WEB-INF/");
-			
-		} else {
-			System.out.println("Não foi possível cadastrar");
-			response.sendError(0, "Impossivel cadastrar");
+		
+		if(paciente.getCpf()!= null && paciente.getNome()!=null) {
+			try {
+				boolean cad = pacienteDao.insertPaciente(paciente);
+				if(cad) {
+					System.out.println("Paciente cadastrado com sucesso!");
+					response.sendRedirect("http://localhost:8080/Tris/list_patients");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}else {
+			request.getRequestDispatcher("/WEB-INF/newPatient.html").forward(request, response);
 		}
 	}
 	
@@ -181,9 +218,9 @@ public class AppServerlet extends HttpServlet {
 		
 		if(remove) {
 			System.out.println("Paciente removido com sucesso!");
-			this.listPatients(request, response);
+			response.sendRedirect("http://localhost:8080/Tris/list_patients");
 		} else {
-			System.out.println("Não foi possível remover o paciente");
+			System.out.println("Nï¿½o foi possï¿½vel remover o paciente");
 			response.sendError(0, "Impossivel remover");
 		}
 	}
@@ -193,7 +230,8 @@ public class AppServerlet extends HttpServlet {
 	 */
 	public void listPatients(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		ArrayList<PacienteModel> lista = pacienteDao.listarPacientes();
-				
+
+		
 		if(request.getParameter("action")!=null) {
 			
 			PacienteModel pacienteExiste = pacienteDao.getPacienteById(Integer.parseInt((request.getParameter("id"))));
@@ -204,7 +242,7 @@ public class AppServerlet extends HttpServlet {
 						request.setAttribute("paciente", pacienteExiste);
 						request.getRequestDispatcher("/WEB-INF/updatePatients.jsp").forward(request, response);			
 					} else {
-						response.sendError(0, "Usuario não encontrado");
+						response.sendError(0, "Usuario nï¿½o encontrado");
 					}
 					
 			 }else if(request.getParameter("action").equalsIgnoreCase("delete_patient")) {
@@ -212,11 +250,11 @@ public class AppServerlet extends HttpServlet {
 				 if(pacienteExiste!=null) {		 
 					 this.deletePatient(request, response);				
 					} else {
-						response.sendError(0, "Usuario não encontrado");
+						response.sendError(0, "Usuario nï¿½o encontrado");
 					}
 			 }
 	
-		} else {
+		} else{
 			 request.setAttribute("pacientes", lista);
 		     request.getRequestDispatcher(listPage).forward(request, response);
 		 }

@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.models.PacienteModel" %>
+<%@ page import="java.lang.String"%>
 <% ArrayList<PacienteModel> lista = (ArrayList<PacienteModel>) request.getAttribute("pacientes");%>
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
     <title>List</title>
 
     <!-- page icon -->
-    <link rel="icon" type="image/png" href=".http://localhost:8080/Tris/static/img/tris-logo-blue.png">
+    <link rel="icon" type="image/png" href="http://localhost:8080/Tris/static/img/tris-logo-blue.png">
 
     <!-- link css  -->
     <link rel="stylesheet" href="http://localhost:8080/Tris/static/css/list.css">
@@ -40,7 +41,8 @@
      -->
         <h1>
             Lista de pacientes
-        </h1>
+        </h1>  
+      <a href="/Tris/create"><button class="btn btn-primary">Voltar</button></a>  
         <table>
             <colgroup>
                 <col class="cor">
@@ -57,7 +59,6 @@
                     <th>COR</th>
                     <th>Nome</th>
                     <th>Cpf</th>
-                    <th>data de nascimento</th>
                     <th>SUS</th>
                     <th>Quadro</th>
                     <th>Descrição</th>
@@ -67,9 +68,19 @@
                 </tr>
             </thead>
             <tbody>
+            	<% String style= "blue";%>
     			<%for(int i=0; i<lista.size(); i++){ %>
                 <tr class="list_of_patients">
-                    <td class="cor_triagem">
+                	<%if(lista.get(i).getQuadro().equals("leve")){
+                		style = "#00bef7";
+                	} else if(lista.get(i).getQuadro().equals("pouco_urgente")){
+                		style = "#29ff62";
+                	} else if(lista.get(i).getQuadro().equals("urgente")){
+                		style = "#ed9b2f";
+                	} else if(lista.get(i).getQuadro().equals("muito_urgente")){
+                		style = "#f52f2f";
+                	}%>
+                    <td class="cor_triagem" bgcolor=<%=style%>>
                     </td>
                     <td>
                     <%=lista.get(i).getNome()%>
@@ -95,13 +106,12 @@
                 </tr>
             </tbody>
         </table>
-        <button action="list_patients">Listar pacientes</button>
     </main>
      <!-- Footer -->
    <footer class="about" id="about" onclick="indexAccessRedirect();">
     <div class="logo-div">
         <div class="logo-img">
-            <img src="../static/img/tris-logo.png" alt="Tris Hospitalar Triage - Logo">
+            <img src="http://localhost:8080/Tris/static/img/tris-logo.png" alt="Tris Hospitalar Triage - Logo">
         </div>
         <div class="logo-text">
             <h1>Tris</h1>

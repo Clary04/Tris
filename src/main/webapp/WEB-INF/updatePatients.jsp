@@ -26,6 +26,7 @@
      <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=League+Spartan:wght@100;200;300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&family=Ubuntu:wght@300&display=swap" rel="stylesheet"> 
 </head>
 <body>
+    <a id="logoutbtn" href="/Tris/logout">Encerrar Sessão</a>
     <main>
         <h1>Editar paciente</h1>
         <section class="form" id="form">
@@ -33,8 +34,6 @@
             	<input type="hidden" name="id" value="<%=paciente.getId()%>">
                 <input type="text" name="cpf" placeholder="Informe o CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" value="<%=paciente.getCpf()%>" required>
                 <input type="text" name= "nome" placeholder="Informe o nome" value="<%=paciente.getNome()%>" required>
-                <label for="birthdate">Informe a data de nascimento</label>
-                <input type="date" name="birthdate">
                 <input type="text" name="sus" placeholder="numero do sus" value="<%=paciente.getSus()%>" required>
                 <input type="email" name="email" id="email" placeholder="email" value="<%=paciente.getEmail()%>">
                 <label for="triagem">Informe o quadro</label>
@@ -49,12 +48,12 @@
                 <button type="submit" id="update">Editar</button>
             </form>
         </section>
-        <img src="../static/img/people_SVG.svg" alt="people">
+        <img src="http://localhost:8080/Tris//static/img/people_SVG.svg" alt="people">
          <!-- Footer -->
         <footer class="about" id="about" onclick="indexAccessRedirect();">
             <div class="logo-div">
                 <div class="logo-img">
-                    <img src="../static/img/tris-logo.png" alt="Tris Hospitalar Triage - Logo">
+                    <img src="http://localhost:8080/Tris/static/img/tris-logo.png" alt="Tris Hospitalar Triage - Logo">
                 </div>
                 <div class="logo-text">
                     <h1>Tris</h1>

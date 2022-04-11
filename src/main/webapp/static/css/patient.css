@@ -23,6 +23,22 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+#logoutbtn{
+	text-decoration: none;
+    text-align: center;
+	position: absolute;
+	font-size: 1rem;	
+    top: 0; right: .5rem;
+    display: block;
+    padding: .7rem .5rem;
+    color: var(--black);
+    font-weight: bold;
+}
+
+#logoutbtn:hover{
+    color: rgb(253, 63, 49);
+}
+
 main{
     display: flex;
     flex-wrap: wrap;
@@ -96,7 +112,7 @@ main .form form #triage{
     border-radius: 4px;
 }
 
-main .form form #description{
+main .form form #descricao{
     width: 100%;
     margin: .3rem 0;
     padding: .3rem .3rem;
@@ -107,30 +123,51 @@ main .form form #description{
     outline: none;
 }
 
-main .form form #description::selection,
-main .form form #description:focus{
+main .form form #descricao::selection,
+main .form form #descricao:focus{
     border: 2px solid var(--black);
 }
 
-main .form form #signin{
-    background: var(--black);
-    color: var(--white);
-    padding: .3rem 3rem;
-    border-radius: 8px;
-    border: none;
+main .form form button{
+    height: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
     cursor: pointer;
-    outline: none;
-    font-weight: bold;
+    background-color: var(--black);
+    color: var(--white);
+    transition: .3s ease ;
+    border: none;
+    border-radius: 4px;
+    padding: 0rem 2rem;
+    margin: 0;
 }
 
-main .form form #signin:hover{
+main .form form button:hover{
     background-color: var(--white);
-    color: var(--dark-blue);
+    color: var(--black);
+    transform: scale(1.01);
 }
 
 main img{
     width: 400px;
     height: 450px;
+}
+
+#listp{
+	text-decoration: none;
+    text-align: center;
+	font-size: 1rem;	
+    padding: .5rem .5rem;
+    color: var(--white);
+    background-color: transparent;
+    font-weight: bold;
+    position: absolute;
+    bottom: 5rem; left: 7rem;
+
+}
+
+#listp:hover{
+    color: var(--blue);
 }
 
 footer{
@@ -212,7 +249,7 @@ footer{
     }
     footer .container-footer{
         flex-direction: column;
-        flex-wrap: wrap;
+        flex-wrap: wrap;	
         justify-content: center;
         align-items: center;
     }

@@ -11,7 +11,7 @@ function indexPageRedirect(){
 }
 
 function indexAccessRedirect(){
-    window.location.href = "../index.html";
+    window.location.href = "http://localhost:8080/Tris/";
 }
 
 function closeBtn(){
